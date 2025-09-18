@@ -1,4 +1,4 @@
-# python verify_cose.py --img qr.jpg --gdhcn --gdhcn-env dev --allow-remote-contexts --allow-unverified-trustlist
+# verify_cose_from_qr_gdhcn.py
 #
 # What it does:
 #   - Decodes a QR image (HC1: Base45 → zlib → COSE_Sign1)
@@ -131,7 +131,7 @@ def make_local_context_loader(context_dir: str, allow_remote: bool = False):
     pathmap: Dict[str, str] = {url: os.path.join(context_dir, fname)
                                for url, fname in REQUIRED_CONTEXT_URLS.items()}
 
-    def loader(url: str):
+    def loader(url: str, options=None):
         if url in pathmap and os.path.exists(pathmap[url]):
             with open(pathmap[url], "r", encoding="utf-8") as f:
                 doc = json.load(f)
