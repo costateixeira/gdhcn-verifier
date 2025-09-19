@@ -1,5 +1,5 @@
-# verify_cose_from_qr_gdhcn.py
-#
+# verify_cose.py
+# python verify_cose.py --img qr.jpg --gdhcn --gdhcn-env dev --allow-remote-contexts --allow-unverified-trustlist
 # What it does:
 #   - Decodes a QR image (HC1: Base45 → zlib → COSE_Sign1)
 #   - Extracts protected/payload/signature (exact CBOR bytes)
@@ -563,3 +563,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
